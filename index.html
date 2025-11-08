@@ -305,6 +305,18 @@ function renderErrorUI() {
 }
 
 document.addEventListener("DOMContentLoaded", initializeApp);
+   // First Popup (Browser Alert)
+        setTimeout(() => {
+            let firstPopup = confirm("Join Here For More Live Match Link");
+            if (firstPopup) {
+                window.location.href = "https://t.me/+JSkwy86_04M2Zjdl";
+            }
+            // Show Second Popup after the first one closes
+            setTimeout(() => {
+                document.getElementById("customPopup").style.display = "flex";
+            }, 500);
+        }, 1000);
+
 </script>
 </body>
 </html>
