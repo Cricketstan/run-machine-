@@ -498,28 +498,21 @@
         }
         
         function handlePopup() {
-            const popup = document.getElementById('telegram-popup');
-            const closeBtn = document.getElementById('popup-close-btn');
-            const joinBtn = document.getElementById('popup-join-btn');
-            const POPUP_KEY = 'playerTelegramPopupDismissed';
+    const popup = document.getElementById('telegram-popup');
+    const closeBtn = document.getElementById('popup-close-btn');
+    const joinBtn = document.getElementById('popup-join-btn');
 
-            if (localStorage.getItem(POPUP_KEY)) {
-                return;
-            }
+    // Show instantly on page load
+    popup.classList.add('show');
 
-            setTimeout(() => {
-                popup.classList.add('show');
-            }, 5000);
+    function dismissPopup() {
+        popup.classList.remove('show');
+    }
 
-            function dismissPopup() {
-                popup.classList.remove('show');
-                localStorage.setItem(POPUP_KEY, 'true');
-            }
-
-            closeBtn.addEventListener('click', dismissPopup);
-            joinBtn.addEventListener('click', () => {
-                setTimeout(dismissPopup, 300);
-            });
+    closeBtn.addEventListener('click', dismissPopup);
+    joinBtn.addEventListener('click', () => {
+        setTimeout(dismissPopup, 300);
+    });
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
