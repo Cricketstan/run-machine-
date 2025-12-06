@@ -275,11 +275,10 @@ function renderIframeUI(data) {
     <img src="https://run-machine.pages.dev/winflix.png" alt="Join Telegram" style="width:100%; height:auto; border-radius:8px;">
 </a>
         </div>
-        <h2><i class="fa-solid fa-bell"></i> Follow us for Updates!</h2>  
-            <a href="https://t.me/+JSkwy86_04M2Zjdl" target="_blank" rel="noopener" class="action-button">  
-                <i class="fa-brands fa-telegram"></i> Click Here To Join Telegram  
-            </a>  
-        </div>  
+        <div class="info-card">
+            <h2><i class="fa-solid fa-link"></i> Copy Link & Share</h2>
+            <button class="action-button" id="shareButton"><i class="fa-solid fa-share-nodes"></i> Click Here To Share This Page Link</button>
+        </div>
         <a href="#" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to All Streams</a>
     `;
     document.getElementById('shareButton').addEventListener('click', async () => {
