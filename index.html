@@ -13,20 +13,20 @@
 
 <style>
 :root {
-    --bg-color: #121212;
+    --bg-color: #ffffff; /* CHANGED TO WHITE */
     --primary-red: #e50914; 
     --primary-red-dark: #b91c1c;
     --card-bg: #1e1e1e;
-    --text-light: #f1f5f9;
-    --text-muted: #94a3b8;
-    --border-color: #2d2d2d;
+    --text-light: #000000; /* TEXT BLACK ON WHITE */
+    --text-muted: #444444;
+    --border-color: #d0d0d0;
     --popup-bg: #282828;
     --popup-shadow-color: rgba(229, 9, 20, 0.4);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color); /* NOW WHITE */
     color: var(--text-light);
     display: flex;
     justify-content: center;
@@ -51,8 +51,9 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    color: white;
 }
-.stream-header h1 { font-size: 1.25rem; font-weight: 600; }
+.stream-header h1 { font-size: 1.25rem; font-weight: 600; color:white; }
 .live-badge {
     background-color: var(--primary-red);
     color: white;
@@ -86,6 +87,7 @@ body {
     padding: 1.25rem;
     margin-top: 1rem;
     text-align: center;
+    color:white;
 }
 .info-card h2 {
     font-size: 1rem;
@@ -129,13 +131,14 @@ body {
     border-radius: 8px;
     transition: background-color 0.2s ease;
 }
-.back-link:hover { background-color: var(--card-bg); color: var(--text-light); }
+.back-link:hover { background-color: #f2f2f2; color: #000; }
 .error-message {
      text-align: center;
      padding: 4rem 1rem;
      background-color: var(--card-bg);
      border: 1px solid var(--border-color);
      border-radius: 12px;
+     color:white;
 }
 .error-message h2 { color: var(--primary-red); font-size: 1.5rem; margin-bottom: 0.5rem; }
 
@@ -144,7 +147,7 @@ body {
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     background: linear-gradient(145deg, #181818, #1f1f1f);
-    color: var(--text-light);
+    color: white;
     padding: 40px 25px;
     border-radius: 16px;
     box-shadow: 0 0 50px 10px rgba(229, 9, 20, 0.5), 0 0 20px rgba(229, 9, 20, 0.3) inset;
@@ -154,12 +157,6 @@ body {
     max-width: 400px;
     display: none;
     border: 2px solid var(--primary-red);
-    animation: popIn 0.4s ease-out forwards, glowPulse 2.5s infinite alternate;
-}
-
-@keyframes glowPulse {
-    0% { box-shadow: 0 0 20px rgba(229, 9, 20, 0.3), 0 0 10px rgba(229, 9, 20, 0.2) inset; }
-    100% { box-shadow: 0 0 40px rgba(229, 9, 20, 0.7), 0 0 20px rgba(229, 9, 20, 0.4) inset; }
 }
 
 .telegram-popup h2 {
@@ -173,7 +170,7 @@ body {
 
 .telegram-popup p {
     font-size: 1rem;
-    color: var(--text-muted);
+    color: #ccc;
     margin-bottom: 1.75rem;
     line-height: 1.5;
 }
@@ -187,27 +184,16 @@ body {
     border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.telegram-popup button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
 .telegram-popup .join-btn {
     background: linear-gradient(90deg, var(--primary-red), var(--primary-red-dark));
     color: white;
-    box-shadow: 0 0 12px rgba(229, 9, 20, 0.4);
-}
-
-.telegram-popup .join-btn:hover {
-    box-shadow: 0 0 25px rgba(229, 9, 20, 0.7);
 }
 
 .telegram-popup .joined-btn {
     background-color: var(--border-color);
-    color: var(--text-light);
+    color: black;
     border: 1px solid var(--primary-red-dark);
 }
 
@@ -216,8 +202,6 @@ body {
         padding: 30px 20px;
         max-width: 90%;
     }
-    .telegram-popup h2 { font-size: 1.5rem; }
-    .telegram-popup p { font-size: 0.9rem; }
 }
 </style>
 </head>
@@ -248,7 +232,6 @@ async function initializeApp() {
             document.title = `${streamData.name}`;
             renderIframeUI(streamData);
 
-            // Show Telegram popup
             setTimeout(() => {
                 document.getElementById('telegramPopup').style.display = 'block';
             }, 1000);
@@ -280,14 +263,12 @@ function renderIframeUI(data) {
             </a>
         </div>
 
-        <!-- ✅ FOLLOW FOR UPDATES SECTION ADDED HERE -->
         <div class="info-card">
             <h2><i class="fa-solid fa-bell"></i> Follow us for Updates!</h2>
             <a href="https://t.me/+JSkwy86_04M2Zjdl" target="_blank" rel="noopener" class="action-button">
                 <i class="fa-brands fa-telegram"></i> Click Here To Join Telegram
             </a>
         </div>
-        <!-- END -->
 
         <a href="#" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to All Streams</a>
     `;
@@ -306,7 +287,6 @@ function renderErrorUI() {
 
 document.addEventListener("DOMContentLoaded", initializeApp);
 
-// First Popup (Browser Alert)
 setTimeout(() => {
     let firstPopup = confirm("Join Here For More Live Match Link");
     if (firstPopup) {
